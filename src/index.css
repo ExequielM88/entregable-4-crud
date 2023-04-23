@@ -1,0 +1,31 @@
+ /*------------reset-----------------*/
+
+ * {
+    box-sizing: border-box;
+ }
+
+ body {
+    margin: 0;
+    background-color: #f5f5f5;
+ }
+
+ h1,h2,h3,h4,p,ul {
+    margin-top: 0;
+    margin-bottom: 0;
+ }
+
+ ul {
+    list-style: none;
+    padding: 0;
+ }
+
+ input {
+    outline: none;
+    font-family: inherit;
+ }
+
+ button {
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+ }
