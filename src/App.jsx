@@ -3,11 +3,13 @@ import './App.css'
 import userCrud from './hook/userCrud'
 import UserCard from './components/UserCard';
 import FormsUser from './components/FormsUser';
+import DeleteAlert from './components/DeleteAlert';
 
 function App() {
 
   const [updateInfo, setupdateInfo] = useState()
   const [formClose, setformClose] = useState(true)
+  const [AlertDeleteClose, setAlertDeleteClose] = useState(true)
 
   const {
     users,
@@ -24,6 +26,10 @@ function App() {
   const handleOpenForm = () => {
     setformClose(false)
   }
+
+ 
+
+
   return (
     <div className="App">
       <header className='app_header'>
@@ -37,6 +43,7 @@ function App() {
         setupdateInfo={setupdateInfo}
         setformClose={setformClose}
         formClose={formClose}
+        
       />
       <div className='app_user_container'>
         {
@@ -44,12 +51,24 @@ function App() {
             <UserCard
               key={user.id}
               user={user}
-              deleteUserById={deleteUserById}
               setupdateInfo={setupdateInfo}
+              setformClose={setformClose}
+              AlertDeleteClose={AlertDeleteClose}
+              setAlertDeleteClose={setAlertDeleteClose}
+              deleteUserById={deleteUserById}
             />
           ))
         }
       </div>
+     { users?.map(user => (
+        <DeleteAlert
+          key={user.id}
+          user={user}
+          setAlertDeleteClose={setAlertDeleteClose}
+          AlertDeleteClose={AlertDeleteClose}
+          deleteUserById={deleteUserById}
+        />
+      ))}
     </div>
     
   )

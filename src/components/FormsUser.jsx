@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,  } from 'react'
 import "./style/formsUser.css"
 import { useForm } from 'react-hook-form'
 import defaultValues from '../utils/defaultValues'
@@ -7,6 +7,7 @@ import defaultValues from '../utils/defaultValues'
 const FormsUser = ({createNewUser,updateInfo,updateUserById,setupdateInfo,setformClose,formClose}) => {
 
   const {register , handleSubmit, reset} = useForm()
+  
 
   useEffect(() => {
     reset(updateInfo) 
@@ -16,16 +17,25 @@ const FormsUser = ({createNewUser,updateInfo,updateUserById,setupdateInfo,setfor
   const submit = (data) => {
     if(updateInfo){
       updateUserById(updateInfo.id,data)
-      setupdateInfo={setupdateInfo}
+      setTimeout(() =>{setupdateInfo()},3000)
+      
+     
     }else{
       createNewUser(data)
     }
+    
     reset(defaultValues)
   }
-  
+
   const handleExit = () => {
     setformClose(true)
+   
   }
+
+
+
+  
+  
   return (
     <div className={`form_container ${formClose && "form_close"}`}>
       <form className='form' onSubmit={handleSubmit(submit)}>
@@ -51,7 +61,7 @@ const FormsUser = ({createNewUser,updateInfo,updateUserById,setupdateInfo,setfor
           <label className='forms_label'   htmlFor="birthday">Birthday</label>
           <input className='forms_input' {...register   ("birthday")} type="date" id='birthday' />
         </div>
-        <button className='form_btn'>{updateInfo ?   "Update" : "Create"}</button> 
+        <button className='form_btn' onClick={handleExit}>{updateInfo? "Submit" : "Create" }</button> 
       </form>
     </div>
   )

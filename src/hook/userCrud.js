@@ -25,7 +25,7 @@ const userCrud = () => {
 
     const deleteUrl = `${url}${id}/`
     axios.delete(deleteUrl)
-      .then(res => getAllUser())
+      .then(() => getAllUser())
       .catch(err => console.log(err))
     
   }
@@ -35,7 +35,7 @@ const userCrud = () => {
   const updateUserById = (id,data) => {
     const urlUpdate = `${url}${id}/`;
     axios.patch(urlUpdate,data)
-      .then(res => getAllUser())
+      .then(() => getAllUser())
       .catch(err => console.log(err))
   }
 
